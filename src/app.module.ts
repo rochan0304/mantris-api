@@ -26,14 +26,10 @@ import { ScheduleModule } from '@nestjs/schedule';
         const isProduction = configService.get('NODE_ENV') === 'production';
         return {
           type: 'postgres',
-          host: configService.get<string>('DB_HOST'),
-          port: configService.get<number>('DB_PORT'),
-          username: configService.get<string>('DB_USERNAME'),
-          password: configService.get<string>('DB_PASSWORD'),
-          database: configService.get<string>('DB_NAME'),
+          url: configService.get<string>('DB_URL'),
           autoLoadEntities: true,
           synchronize: !isProduction,
-          logging: isProduction ? ['error'] : 'all',
+          logging: isProduction ? ['error'] : 'all'
         }
       }
     }),
