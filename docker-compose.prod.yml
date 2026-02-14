@@ -1,0 +1,31 @@
+services:
+  db:
+    image: postgres:18-alpine
+    container_name: postgres-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Nieve.03
+      POSTGRES_DB: mantris_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgres/data
+  api:
+    build: 
+      context: ./server
+      dockerfile: Dockerfile
+    image: rossell03/server:v1.0.0
+    container_name: nest-api
+    ports:
+       - "3000:3000"
+    environment:
+      - DATABASE_URL=postgres://postgres:Nieve.03@db:5432/mantris_db
+    env_file:
+      - /server/.env.production
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+    command: npm run start
+volumes:
+  pg_data:
+    
