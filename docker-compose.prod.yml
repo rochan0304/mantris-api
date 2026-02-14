@@ -19,7 +19,7 @@ services:
     ports:
        - "3000:3000"
     environment:
-      - DATABASE_URL=postgres://postgres:Nieve.03@db:5432/mantris_db
+      - DB_URL=postgres://postgres:Nieve.03@db:5432/mantris_db
     env_file:
       - /server/.env.production
     volumes:
