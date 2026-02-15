@@ -33,15 +33,9 @@ import { join } from 'path';
           synchronize: !isProduction,
           logging: isProduction ? ['error'] : 'all',
           ssl: {
-            ca: fs.readFileSync(join(process.cwd(), 'ca.pem')).toString(),
-            rejectUnauthorized: false,
+            ca: fs.readFileSync('/etc/secrets/ca.pem').toString(),
+            rejectUnauthorized: true,
           },
-          extra: {
-            ssl: {
-              ca: fs.readFileSync(join(process.cwd(), 'ca.pem')).toString(),
-              rejectUnauthorized: false,
-            }
-          }
         }
       }
     }),
