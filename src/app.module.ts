@@ -12,6 +12,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './modules/auth/auth.module';
 import { ScheduleModule } from '@nestjs/schedule';
+import fs from 'fs';
 
 @Module({
   imports: [
@@ -31,7 +32,8 @@ import { ScheduleModule } from '@nestjs/schedule';
           synchronize: !isProduction,
           logging: isProduction ? ['error'] : 'all',
           ssl: {
-            rejectUnauthorized: false,
+            ca: configService.get<string>('DB_CA_CERT'),
+            rejectUnauthorized: true,
           }
         }
       }
