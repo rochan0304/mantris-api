@@ -34,7 +34,13 @@ import { join } from 'path';
           logging: isProduction ? ['error'] : 'all',
           ssl: {
             ca: fs.readFileSync(join(process.cwd(), 'ca.pem')).toString(),
-            rejectUnauthorized: true,
+            rejectUnauthorized: false,
+          },
+          extra: {
+            ssl: {
+              ca: fs.readFileSync(join(process.cwd(), 'ca.pem')).toString(),
+              rejectUnauthorized: false,
+            }
           }
         }
       }
