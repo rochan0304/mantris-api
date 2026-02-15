@@ -29,7 +29,10 @@ import { ScheduleModule } from '@nestjs/schedule';
           url: configService.get<string>('DB_URL'),
           autoLoadEntities: true,
           synchronize: !isProduction,
-          logging: isProduction ? ['error'] : 'all'
+          logging: isProduction ? ['error'] : 'all',
+          ssl: {
+            rejectUnauthorized: false,
+          }
         }
       }
     }),
