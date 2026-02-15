@@ -33,8 +33,7 @@ import { join } from 'path';
           synchronize: !isProduction,
           logging: isProduction ? ['error'] : 'all',
           ssl: {
-            ca: fs.readFileSync('/etc/secrets/ca.pem').toString(),
-            rejectUnauthorized: true,
+            rejectUnauthorized: false,
           },
         }
       }
