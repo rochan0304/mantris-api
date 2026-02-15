@@ -13,6 +13,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './modules/auth/auth.module';
 import { ScheduleModule } from '@nestjs/schedule';
 import fs from 'fs';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -32,7 +33,7 @@ import fs from 'fs';
           synchronize: !isProduction,
           logging: isProduction ? ['error'] : 'all',
           ssl: {
-            ca: configService.get<string>('DB_CA_CERT'),
+            ca: fs.readFileSync(join(process.cwd(), 'ca.pem')).toString(),
             rejectUnauthorized: true,
           }
         }
