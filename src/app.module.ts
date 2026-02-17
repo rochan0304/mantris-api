@@ -30,11 +30,10 @@ import { join } from 'path';
           type: 'postgres',
           url: configService.get<string>('DB_URL'),
           autoLoadEntities: true,
-          synchronize: !isProduction,
+          synchronize: true,
           logging: isProduction ? ['error'] : 'all',
           ssl: {
-            ca: fs.readFileSync('/etc/secrets/ca.pem').toString(),
-            rejectUnauthorized: true,
+            rejectUnauthorized: false,
           },
         }
       }
