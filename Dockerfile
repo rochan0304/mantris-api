@@ -12,7 +12,7 @@ COPY --from=build_stage /app/package*.json ./
 COPY --from=build_stage /app/dist ./dist
 RUN npm install --only=production
 
-EXPOSE 8080
+EXPOSE 3000
 
 USER node
 CMD ["node", "dist/main.js"]
