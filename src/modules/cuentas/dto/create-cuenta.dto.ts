@@ -8,8 +8,5 @@ export class CreateAccountDto {
     currentBalance: number;
 
     @IsNotEmpty()
-    userId: string;
-
-    @IsNotEmpty()
     currencyId: string;
 }

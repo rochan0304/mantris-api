@@ -1,6 +1,6 @@
-import { IsEmail, IsNotEmpty, IsOptional, MaxLength, MinLength } from "class-validator";
+import { IsEmail, IsNotEmpty, MaxLength, MinLength } from "class-validator";
 
-export class RegisterDto {
+export class LoginDto {
     @IsEmail({}, { message: 'Formato de correo inválido.' })
     email: string;
 
@@ -8,7 +8,4 @@ export class RegisterDto {
     @MinLength(8, {message: 'Contraseña debe tener al menos 8 caracteres.' })
     @MaxLength(72, { message: 'La contraseña es demasiado larga.'})
     password: string;
-
-    @IsNotEmpty()
-    passwordVerify: string;
 }

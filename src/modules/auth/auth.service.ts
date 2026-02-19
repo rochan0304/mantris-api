@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { User } from '../usuarios/entities/usuario.entity';
 import { JwtService } from '@nestjs/jwt';
 import { RegisterDto } from './dto/register.dto';
@@ -33,8 +33,14 @@ export class AuthService {
     }    
 
     async register(registerData: RegisterDto) {
-        const { password, email } = registerData;
+        const { password, passwordVerify, email } = registerData;
         
+        const isMatch = password === passwordVerify;
+
+        if (!isMatch) {
+            throw new BadRequestException('Contraseñas no coinciden.');
+        }
+
         const salt = await bcrypt.genSalt();
         const passHashed = await bcrypt.hash(password, salt);
 

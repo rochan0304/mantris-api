@@ -89,4 +89,9 @@ export class AssignmentsService {
       await queryRunner.release();
     }
   }
+
+  async deleteAssignment(id: string) {
+    const result = await this.assignmentRepository.delete(id);
+    return result;
+  }
 }

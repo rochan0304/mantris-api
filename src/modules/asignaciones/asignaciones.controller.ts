@@ -37,4 +37,10 @@ export class AsignacionesController {
     const addedAssignment = await this.assignmentsService.addAssignment(incomeAssignmentDto, userId);
     return addedAssignment;
   }
+
+  @Delete(':id')
+  async deleteAssignment(@Param() id: string) {
+    const deletedAssignment = await this.assignmentsService.deleteAssignment(id);
+    return deletedAssignment;
+  }
 }

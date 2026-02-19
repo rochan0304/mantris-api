@@ -59,4 +59,12 @@ export class AccountsService {
         
         return accounts;
     }
+
+    async deleteAccount(accountId: string) {
+        const result = await this.accountRepository.delete(accountId);
+        if (result.affected === 0) {
+            throw new Error(`Task with ID ${accountId} not found`);
+        }
+        return result;
+    }
 }

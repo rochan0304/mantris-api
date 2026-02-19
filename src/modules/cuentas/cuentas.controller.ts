@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Request } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Request, UsePipes, ValidationPipe } from '@nestjs/common';
 import { AccountsService } from './cuentas.service';
 import { CreateAccountDto } from './dto/create-cuenta.dto';
 import { UpdateAccountDto } from './dto/update-cuenta.dto';
@@ -10,6 +10,7 @@ import type { RequestDto } from '../auth/jwt.strategy';
 import { ConvertedBalance, TotalByCurrenciesData } from 'src/types/accounts.type';
 
 @UseGuards(AuthGuard('jwt'))
+@UsePipes(new ValidationPipe())
 @Controller('accounts')
 export class AccountsController {
   constructor(
@@ -92,5 +93,12 @@ export class AccountsController {
     const totalByCurrencies = await this.accountsService.getTotalByCurrency(userId);
 
     return totalByCurrencies;
+  }
+
+  @Delete(':id')
+  async deleteAccount(@Param() accountId: string) {
+    console.log(accountId);
+    const accountDeleted = await this.accountsService.deleteAccount(accountId);
+    return accountDeleted;
   }
 }

@@ -3,6 +3,7 @@ import { AuthService } from './auth.service';
 import { UsersService } from '../usuarios/usuarios.service';
 import { RegisterDto } from './dto/register.dto';
 import bcrypt from 'node_modules/bcryptjs';
+import { LoginDto } from './dto/login.dto';
 
 @Controller('auth')
 export class AuthController {
@@ -19,7 +20,7 @@ export class AuthController {
 
   @Post('login')
   @UsePipes(new ValidationPipe())
-  async login(@Body() loginData: RegisterDto) {
+  async login(@Body() loginData: LoginDto) {
     const { password, email } = loginData;
     
     const user = await this.usersService.findOne(email.toLowerCase());
