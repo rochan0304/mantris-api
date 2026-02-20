@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="https://raw.githubusercontent.com/PKief/vscode-material-icon-theme/master/icons/database.svg" width="100" alt="Mantris Logo" />
-</p>
-
 <h1 align="center">Mantris | Gestor de Finanzas Multidivisa</h1>
 
 <p align="center">
