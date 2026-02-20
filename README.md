@@ -54,8 +54,14 @@ El proyecto está dividido en dos repositorios (Frontend y Backend). Sigue estos
 
 ### 1. Clonar los repositorios
 ```bash
-# Para el Backend
-git clone [https://github.com/tu-usuario/mantris-backend.git](https://github.com/tu-usuario/mantris-backend.git)
+# Clonar el repositorio
+git clone https://github.com/rochan0304/mantris-api
 
-# Para el Frontend
-git clone [https://github.com/tu-usuario/mantris-frontend.git](https://github.com/tu-usuario/mantris-frontend.git)
+# Instalar dependencias
+npm install
+
+#Configurar variables de entorno (.env)
+# DB_URL, JWT_SECRET, CLIENT_URL
+
+# Iniciar en modo desarrollo
+npm run start:dev 
