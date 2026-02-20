@@ -54,7 +54,6 @@ Esta aplicación permite centralizar cuentas en diferentes divisas, aplicando co
 
 El proyecto está dividido en dos repositorios (Frontend y Backend). Sigue estos pasos para correrlo localmente:
 
-### 1. Clonar los repositorios
 ```bash
 # Clonar el repositorio
 git clone https://github.com/rochan0304/mantris-api
