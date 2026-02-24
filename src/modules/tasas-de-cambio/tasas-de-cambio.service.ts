@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException, OnModuleInit } from '@nestjs/common';
 import { CreateExchangeRateDto } from './dto/create-tasas-de-cambio.dto';
 import { UpdateExchangeRateDto } from './dto/update-tasas-de-cambio.dto';
-import { Cron } from '@nestjs/schedule';
+import { Cron, CronExpression } from '@nestjs/schedule';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ExchangeRate } from './entities/tasas-de-cambio.entity';
 import { Repository } from 'typeorm';
@@ -40,7 +40,7 @@ export class ExchangeRatesService implements OnModuleInit {
         console.log('✅ Exchange Rates seeded successfully')
     }
 
-    @Cron('0 0 0,12 * * *', { timeZone: 'America/Caracas' })
+    @Cron(CronExpression.EVERY_2_HOURS, { timeZone: 'America/Caracas' })
     async create() {
         try {
             let response = await fetch('https://v6.exchangerate-api.com/v6/725ad52e92e4f8b755af6c94/pair/EUR/GBP');
