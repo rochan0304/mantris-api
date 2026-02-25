@@ -180,7 +180,8 @@ export class TransactionsService {
                 
                 const updateAssignment = new Big(assignment.availableBalance);
                 
-                const amountConverted = await this.exchangeRatesService.conversionsCurrencys(dto.currencyId, '', String(dto.amount));
+                const amountConverted = await this.exchangeRatesService.conversionsCurrencys(dto.currencyId, baseCurrencyId, String(dto.amount));
+                console.log('HOLAAA');
                 
                 assignment.availableBalance = Number(updateAssignment.minus(amountConverted));
                 await manager.save(assignment);

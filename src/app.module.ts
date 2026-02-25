@@ -32,9 +32,11 @@ import { join } from 'path';
           autoLoadEntities: true,
           synchronize: true,
           logging: isProduction ? ['error'] : 'all',
+          /*
           ssl: {
             rejectUnauthorized: false,
           },
+          */
         }
       }
     }),
